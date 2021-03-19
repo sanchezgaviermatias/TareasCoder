@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Restful</title>
+</head>
+
+<body>
+    <h2>Formulario Agregar Producto</h2>
+    <form method="post" action="api/productos/guardar/">
+        <label>Títutlo</label>
+        <input type="text" required name="title"> <br>
+        <label>Precio</label>
+        <input type="number" required name="price">   <br>
+        <label>Url Imágen</label>
+        <input type="text" required name="thumbnail"> <br>
+        <input type="submit" value="Agregar Producto">
+    </form>
+</body>
+
+</html>

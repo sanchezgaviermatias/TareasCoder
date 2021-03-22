@@ -35,8 +35,7 @@ thumbnail: }
 let productos = []
 let producto
 let nuevo_producto
-
-
+let id = 0
 
 
 
@@ -98,7 +97,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/productos/guardar/', (req, res) => {
-    let id = productos.length + 1
+    id += 1
     req.body.id = id
     producto = req.body
     productos.push(producto)

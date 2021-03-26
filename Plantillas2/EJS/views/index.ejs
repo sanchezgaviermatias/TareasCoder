@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('header'); %>
+</head>
+
+<body>
+    <div class="container">
+
+        <h2>Formulario Agregar Producto</h2>
+        <form method="post" action="api/productos/guardar/">
+            <label class="form-label">Títutlo</label>
+            <input class="form-control" type="text" required name="title"> <br>
+            <label class="form-label">Precio</label>
+            <input class="form-control" type="number" required name="price"> <br>
+            <label class="form-label">Url Imágen</label>
+            <input class="form-control" type="text" required name="thumbnail"> <br>
+            <button type="submit" class="btn btn-primary">Agregar Producto 😎</button>
+            <button type="submit" class="btn btn-danger"> <a style="color: inherit; text-decoration:none;" href="http://localhost:8080/productos/vista">Mirar Productos</a>  </button> </form>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('header'); %>
+</head>
+
+<body>
+    <div class="container my-4">
+        <h3>Lista de Productos </h3>
+        <%if (tamaño > 0) { %>
+
+
+
+        <table class="table my-4">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Imagen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <% for(var i=0; i < tamaño; i++) { %>
+                    <th scope="row"><%= productos[i].id %></th>
+                    <td> <%= productos[i].title %> </td>
+                    <td> <%= productos[i].price %></td>
+                    <td> <img style="max-width:34px;" src="<%= productos[i].thumbnail %>"class="img-thumbnail" alt="imagen">
+                    </td>
+                    <% } %>
+                </tr>
+            </tbody>
+        </table>
+        <% } else{ %>
+
+        No Hay productos ! 😪
+
+
+
+        <% } %>
+        <button type="button" class="btn btn-small btn-warning"> <a style="color: inherit; text-decoration:none"
+                href="http://localhost:8080/"> Volver a Productos </a></button>
+</body>
+
+</html>
+
+
+
+
+</div>

@@ -1,0 +1,85 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://npmcdn.com/@reactivex/rxjs@5.0.0-rc.1/dist/global/Rx.js"></script>
+    <script defer src="02+SanchezGavier.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.6/rxjs.umd.js.map"></script>
+
+</head>
+
+<body>
+    <script type="module">
+
+
+        import {fromEvent}  from "https://dev.jspm.io/rxjs@6/_esm2015"
+        import {map}  from "https://dev.jspm.io/rxjs@6/_esm2015/operators"
+        import {filter}  from "https://dev.jspm.io/rxjs@6/_esm2015/operators"
+
+
+        // Selección de Elementos HTML
+        const node = document.getElementById('miforma');
+        const p = document.getElementById('llenar');
+
+        // Observable        
+        const observable = fromEvent(node, 'keyup')
+
+
+        let mirrorText = ''
+
+
+
+    const miSuscripcion = observable.
+    pipe(filter((event=>event.which<=90 && event.which>= 48) || event.which==32), map(event => event.key)).subscribe(event => {
+                mirrorText += event
+
+                if (mirrorText.includes("error")) {
+                miSuscripcion.error("Se ingreso Error")
+                }
+                if (mirrorText.includes("complete")) {
+                miSuscripcion.complete()
+                }
+
+                p.textContent = mirrorText.split('').reverse().join('')
+
+
+                setTimeout(() => {
+                miSuscripcion.unsubscribe()
+                clean()
+                }, 30000)
+
+
+        }, error => {
+            clean()
+            console.log(error)
+
+        },
+        () => {
+            clean()
+            console.log("se Ingreso Complete")
+        })
+
+
+
+
+    const clean = () => {
+    p.textContent = ""
+    node.value = ""
+    node.disabled = true
+    mirrorText = ""
+    }
+    </script>
+
+
+
+    <h1>Hola mundo</h1>
+    <form action="">
+        <label for="entrada">Escribí tu texto 😎😎</label><br>
+        <input type="text" name="entrada" id="miforma"> <span id="llenar"></span>
+    </form>
+</body>
+
+</html>
